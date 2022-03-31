@@ -6,6 +6,8 @@ const { formatPayload, filterPayload } = require('./utils/data')
 const cron = require('node-cron');
 
 const run = async () => {
+  console.log('Rodando cron task')
+
   let posts = await getPosts()
   posts = formatPayload(posts)
   posts = filterPayload(posts)
