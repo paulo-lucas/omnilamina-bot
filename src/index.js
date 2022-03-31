@@ -15,7 +15,7 @@ const run = async () => {
   for (const post of posts) {
     await sendMessage(`>>> **${post.title}**`)
     await sendMessage(post.content)
-    await sendMessage(post.image)
+    // await sendMessage(post.image)
     await sendMessage(`Leia mais: ${post.url}`)
   }
 }

@@ -4,7 +4,7 @@ module.exports.formatPayload = (data) => {
     title: post.title,
     content: post.content && post.content.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 450) + '...',
     date: post.date,
-    url: `https://www.epicgames.com/fortnite/pt-BR/news/${post.urlPattern}`
+    url: `https://www.epicgames.com/fortnite/pt-BR/news/${post.slug}`
   }))
 
   return payload
