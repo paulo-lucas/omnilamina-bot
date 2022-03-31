@@ -3,6 +3,7 @@ require('dotenv').config()
 const { getPosts } = require('./services/epic')
 const { sendMessage } = require('./services/discord')
 const { formatPayload, filterPayload } = require('./utils/data')
+const { sleep } = require('./utils/sleep')
 const cron = require('node-cron');
 
 const env = process.env.ENV
@@ -16,9 +17,13 @@ const run = async () => {
 
   for (const post of posts) {
     await sendMessage(`>>> **${post.title}**`)
+    await sleep(1500)
     await sendMessage(post.content)
+    await sleep(1500)
     // await sendMessage(post.image)
+    // await sleep(1500)
     await sendMessage(`Leia mais: ${post.url}`)
+    await sleep(1500)
   }
 }
 
