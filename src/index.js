@@ -5,6 +5,8 @@ const { sendMessage } = require('./services/discord')
 const { formatPayload, filterPayload } = require('./utils/data')
 const cron = require('node-cron');
 
+const env = process.env.ENV
+
 const run = async () => {
   console.log('Rodando cron task')
 
@@ -20,4 +22,8 @@ const run = async () => {
   }
 }
 
-cron.schedule('0 * * * *', run);
+const schedule = env === "dev"
+  ? '*/30 * * * * *' // every 30 seconds
+  : '0 * * * *' // every hour
+
+cron.schedule(schedule, run);
